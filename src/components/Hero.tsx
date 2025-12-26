@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import profileImage from '../assets/tabrez.jpg';
 
 const Hero = () => {
   const [visible, setVisible] = useState(false);
@@ -37,18 +38,15 @@ const Hero = () => {
               </span>
             </h1>
 
-            {/* Name + Handle */}
             <p className="text-blue-300/70 text-xl font-light">
               Mohd. Tabrez Mukadam
               <span className="text-blue-400/40"> · HunterX461</span>
             </p>
 
-            {/* Tagline */}
             <p className="text-blue-200/60 text-sm font-light max-w-xl">
               Security researcher focused on web, cloud, and blockchain systems.
             </p>
 
-            {/* Resume Button */}
             <div className="pt-2">
               <a
                 href="/resume.pdf"
@@ -87,29 +85,24 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Visual */}
+        {/* Right Visual — REAL PHOTO */}
         <div
           className={`relative transition-all duration-1000 delay-500 ${
             visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
           }`}
         >
           <div className="relative aspect-square max-w-lg mx-auto">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-sky-400/20 rounded-3xl blur-2xl"></div>
+            {/* Glow */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/30 to-sky-400/20 rounded-3xl blur-2xl"></div>
 
-            <div className="relative h-full bg-slate-900/40 backdrop-blur-sm border border-blue-400/20 rounded-3xl p-8 flex items-center justify-center">
-              <div className="text-center space-y-4">
-                <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500/30 to-sky-400/30 rounded-full flex items-center justify-center border border-blue-400/30">
-                  <div className="w-28 h-28 bg-slate-800/50 rounded-full flex items-center justify-center">
-                    <span className="text-blue-300/50 text-4xl">✦</span>
-                  </div>
-                </div>
-                <p className="text-blue-300/60 text-sm font-light tracking-wider">
-                  CHARACTER PLACEHOLDER
-                </p>
-                <p className="text-blue-400/40 text-xs font-light max-w-xs mx-auto">
-                  Reserved for a future 3D character or animated avatar
-                </p>
-              </div>
+            {/* Image Container */}
+            <div className="relative h-full bg-slate-900/40 backdrop-blur-sm border border-blue-400/20 rounded-3xl p-4 flex items-center justify-center">
+              <img
+                src={profileImage}
+                alt="Mohd. Tabrez Mukadam"
+                className="w-full h-full object-cover rounded-2xl grayscale-[10%] contrast-105"
+                loading="eager"
+              />
             </div>
           </div>
         </div>

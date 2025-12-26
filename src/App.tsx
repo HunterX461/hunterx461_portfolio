@@ -2,6 +2,7 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
+import SecurityTimeline from './components/SecurityTimeline';
 import Projects from './components/Projects';
 import Ethics from './components/Ethics';
 import Certifications from './components/Certifications';
@@ -14,6 +15,7 @@ function App() {
       <Hero />
       <About />
       <Skills />
+      <SecurityTimeline />
       <Projects />
       <Ethics />
       <Certifications />

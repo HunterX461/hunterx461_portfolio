@@ -12,21 +12,21 @@ const Projects = () => {
     {
       title: 'Security Research & Bug Bounty',
       description:
-        'Conducted security research across multiple web applications and platforms, submitting 24+ validated vulnerability reports through responsible disclosure on platforms such as HackerOne, Bugcrowd, Intigriti, and Immunefi.',
+        'Conducted security research across multiple web applications and platforms, submitting multiple validated vulnerability reports through responsible disclosure on platforms such as HackerOne, Bugcrowd, and Intigriti.',
       tags: ['Web Security', 'Bug Bounty', 'OWASP', 'Responsible Disclosure'],
       gradient: 'from-sky-500/20 to-cyan-500/20',
     },
     {
       title: 'Smart Contract Security Audits',
       description:
-        'Performed security analysis and audits of Solidity-based smart contracts for DeFi protocols, identifying issues related to access control, token approvals, and ownership logic with potential high-impact financial risk.',
+        'Performed security analysis and audits of Solidity-based smart contracts for DeFi protocols, identifying issues related to access control, token approvals, and ownership logic with potential financial risk.',
       tags: ['Blockchain', 'Solidity', 'DeFi', 'Security Auditing'],
       gradient: 'from-blue-500/20 to-cyan-500/20',
     },
     {
       title: 'CTFs & Competitive Security',
       description:
-        'Actively participated in Capture The Flag competitions and security labs, strengthening skills in exploit development, reverse engineering, and real-world attack scenarios across platforms like Hack The Box and TryHackMe.',
+        'Participated in Capture The Flag competitions and security labs to strengthen skills in exploit development, reverse engineering, and real-world attack scenarios using platforms such as Hack The Box and TryHackMe.',
       tags: ['CTF', 'Exploit Development', 'Reverse Engineering'],
       gradient: 'from-cyan-500/20 to-sky-500/20',
     },
@@ -85,12 +85,21 @@ const Projects = () => {
                     ))}
                   </div>
 
+                  {/* Actions */}
                   <div className="flex gap-4 pt-4">
-                    <span className="flex items-center gap-2 text-sm text-blue-300/60">
+                    <button
+                      onClick={() =>
+                        document
+                          .getElementById('contact')
+                          ?.scrollIntoView({ behavior: 'smooth' })
+                      }
+                      className="flex items-center gap-2 text-sm text-blue-300/70 hover:text-blue-300 transition-colors duration-300 underline underline-offset-4"
+                    >
                       <ExternalLink className="w-4 h-4" strokeWidth={1.5} />
-                      <span>Details Available on Request</span>
-                    </span>
-                    <span className="flex items-center gap-2 text-sm text-blue-300/60">
+                      <span>Details available on request</span>
+                    </button>
+
+                    <span className="flex items-center gap-2 text-sm text-blue-300/50">
                       <Github className="w-4 h-4" strokeWidth={1.5} />
                       <span>Private / Research Work</span>
                     </span>

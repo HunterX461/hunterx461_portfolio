@@ -42,11 +42,24 @@ const Hero = () => {
               Mohd. Tabrez Mukadam
               <span className="text-blue-400/40"> · HunterX461</span>
             </p>
-          </div>
-          <p className="text-blue-200/60 text-sm font-light max-w-xl">
-  Security researcher focused on web, cloud, and blockchain systems.
-</p>
 
+            {/* Tagline */}
+            <p className="text-blue-200/60 text-sm font-light max-w-xl">
+              Security researcher focused on web, cloud, and blockchain systems.
+            </p>
+
+            {/* Resume Button */}
+            <div className="pt-2">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-2 bg-blue-500/10 border border-blue-400/30 text-blue-100 rounded-full hover:bg-blue-500/20 hover:border-blue-400/50 transition-all duration-300 text-sm"
+              >
+                Download Resume
+              </a>
+            </div>
+          </div>
 
           <p className="text-blue-200/70 text-lg font-light leading-relaxed max-w-xl">
             Computer Science undergraduate focused on cybersecurity, cloud systems,

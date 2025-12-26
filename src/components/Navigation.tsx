@@ -1,22 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const navItems = ['About', 'Skills', 'Projects', 'Certifications', 'Contact'];
@@ -30,12 +24,13 @@ const Navigation = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-        {/* Brand */}
+        {/* Terminal Identity */}
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="text-lg sm:text-xl font-light tracking-widest text-blue-100 hover:text-blue-300 transition-colors duration-300"
+          onClick={scrollToTop}
+          className="font-mono text-sm sm:text-base text-blue-100 tracking-tight flex items-center"
         >
-          Tabrez
+          <span className="opacity-80">~/tabrez</span>
+          <span className="ml-1 text-blue-400 animate-pulse">_</span>
         </button>
 
         {/* Desktop Nav */}
@@ -43,7 +38,11 @@ const Navigation = () => {
           {navItems.map((item) => (
             <button
               key={item}
-              onClick={() => scrollToSection(item.toLowerCase())}
+              onClick={() =>
+                document
+                  .getElementById(item.toLowerCase())
+                  ?.scrollIntoView({ behavior: 'smooth' })
+              }
               className="text-sm font-light tracking-wide text-blue-200/70 hover:text-blue-300 transition-all duration-300 relative group"
             >
               {item}

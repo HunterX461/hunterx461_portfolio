@@ -3,32 +3,45 @@ import { ExternalLink, Github } from 'lucide-react';
 const Projects = () => {
   const projects = [
     {
+      title: 'QuantPairs Lab',
+      description:
+        'A high-performance quantitative analysis toolkit for crypto-asset pair trading. Implements statistical arbitrage strategies, cointegration testing, and automated backtesting frameworks for market-neutral execution.',
+      tags: ['Python', 'Quantitative Finance', 'Pandas', 'Trading Bot'],
+      gradient: 'from-emerald-500/20 to-teal-500/20',
+      github: 'https://github.com/HunterX461/quantpairs-lab',
+      isPublic: true,
+    },
+    {
       title: 'ClaimGuardian AI',
       description:
-        'An AI-assisted system designed to support insurance claim reviewers by identifying potential fraud patterns. Combines machine learning with cloud-based AI reasoning to provide transparent risk scoring and human-readable explanations.',
+        'An AI-assisted system designed to support insurance claim reviewers by identifying potential fraud patterns. Combines machine learning with cloud-based AI reasoning to provide transparent risk scoring.',
       tags: ['Machine Learning', 'Python', 'Cloud', 'AI Security'],
       gradient: 'from-blue-500/20 to-sky-500/20',
+      isPublic: false,
     },
     {
       title: 'Security Research & Bug Bounty',
       description:
-        'Conducted security research across multiple web applications and platforms, submitting multiple validated vulnerability reports through responsible disclosure on platforms such as HackerOne, Bugcrowd, and Intigriti.',
+        'Conducted security research across multiple web applications and platforms, submitting multiple validated vulnerability reports through responsible disclosure on platforms such as HackerOne.',
       tags: ['Web Security', 'Bug Bounty', 'OWASP', 'Responsible Disclosure'],
       gradient: 'from-sky-500/20 to-cyan-500/20',
+      isPublic: false,
     },
     {
       title: 'Smart Contract Security Audits',
       description:
-        'Performed security analysis and audits of Solidity-based smart contracts for DeFi protocols, identifying issues related to access control, token approvals, and ownership logic with potential financial risk.',
+        'Performed security analysis and audits of Solidity-based smart contracts for DeFi protocols, identifying issues related to access control and ownership logic with potential financial risk.',
       tags: ['Blockchain', 'Solidity', 'DeFi', 'Security Auditing'],
       gradient: 'from-blue-500/20 to-cyan-500/20',
+      isPublic: false,
     },
     {
       title: 'CTFs & Competitive Security',
       description:
-        'Participated in Capture The Flag competitions and security labs to strengthen skills in exploit development, reverse engineering, and real-world attack scenarios using platforms such as Hack The Box and TryHackMe.',
+        'Participated in Capture The Flag competitions and security labs to strengthen skills in exploit development and reverse engineering using platforms such as Hack The Box.',
       tags: ['CTF', 'Exploit Development', 'Reverse Engineering'],
       gradient: 'from-cyan-500/20 to-sky-500/20',
+      isPublic: false,
     },
   ];
 
@@ -60,12 +73,12 @@ const Projects = () => {
                 className={`absolute inset-0 bg-gradient-to-br ${project.gradient} rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700`}
               ></div>
 
-              <div className="relative h-full bg-slate-800/40 backdrop-blur-sm border border-blue-400/10 rounded-2xl overflow-hidden hover:border-blue-400/30 transition-all duration-500">
+              <div className="relative h-full bg-slate-800/40 backdrop-blur-sm border border-blue-400/10 rounded-2xl overflow-hidden hover:border-blue-400/30 transition-all duration-500 flex flex-col">
                 <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center border-b border-blue-400/10">
                   <div className="text-blue-400/30 text-6xl">✦</div>
                 </div>
 
-                <div className="p-6 space-y-4">
+                <div className="p-6 space-y-4 flex-grow">
                   <h3 className="text-2xl font-light text-blue-100">
                     {project.title}
                   </h3>
@@ -84,26 +97,39 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
+                </div>
 
-                  {/* Actions */}
-                  <div className="flex gap-4 pt-4">
-                    <button
-                      onClick={() =>
-                        document
-                          .getElementById('contact')
-                          ?.scrollIntoView({ behavior: 'smooth' })
-                      }
-                      className="flex items-center gap-2 text-sm text-blue-300/70 hover:text-blue-300 transition-colors duration-300 underline underline-offset-4"
+                {/* Actions Section */}
+                <div className="p-6 pt-0 mt-auto flex gap-4">
+                  {project.isPublic ? (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-blue-300 hover:text-blue-100 transition-colors duration-300"
                     >
-                      <ExternalLink className="w-4 h-4" strokeWidth={1.5} />
-                      <span>Details available on request</span>
-                    </button>
-
-                    <span className="flex items-center gap-2 text-sm text-blue-300/50">
                       <Github className="w-4 h-4" strokeWidth={1.5} />
-                      <span>Private / Research Work</span>
-                    </span>
-                  </div>
+                      <span>View Source</span>
+                    </a>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() =>
+                          document
+                            .getElementById('contact')
+                            ?.scrollIntoView({ behavior: 'smooth' })
+                        }
+                        className="flex items-center gap-2 text-sm text-blue-300/70 hover:text-blue-300 transition-colors duration-300 underline underline-offset-4"
+                      >
+                        <ExternalLink className="w-4 h-4" strokeWidth={1.5} />
+                        <span>Details on request</span>
+                      </button>
+                      <span className="flex items-center gap-2 text-sm text-blue-300/50">
+                        <Github className="w-4 h-4" strokeWidth={1.5} />
+                        <span>Private</span>
+                      </span>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

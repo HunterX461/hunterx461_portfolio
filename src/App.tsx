@@ -7,6 +7,8 @@ import Projects from './components/Projects';
 import Ethics from './components/Ethics';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
+import WriteupsSection from './components/WriteupsSection';
+import LocalRoot from './components/LocalRoot';
 
 function App() {
   return (

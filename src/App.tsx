@@ -1,3 +1,6 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Analytics } from "@vercel/analytics/react";
+
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -7,22 +10,45 @@ import Projects from './components/Projects';
 import Ethics from './components/Ethics';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
+
+// New Components
 import WriteupsSection from './components/WriteupsSection';
 import LocalRoot from './components/LocalRoot';
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-900">
-      <Navigation />
-      <Hero />
-      <About />
-      <Skills />
-      <SecurityTimeline />
-      <Projects />
-      <Ethics />
-      <Certifications />
-      <Contact />
-    </div>
+    <>
+      <Router>
+        <Routes>
+          
+          {/* Route 1: The Main Portfolio Homepage */}
+          <Route path="/" element={
+            <div className="min-h-screen bg-slate-900">
+              <Navigation />
+              <Hero />
+              <About />
+              <Skills />
+              <SecurityTimeline />
+              <Projects />
+              
+              {/* Writeups Section added here */}
+              <WriteupsSection />
+              
+              <Ethics />
+              <Certifications />
+              <Contact />
+            </div>
+          } />
+
+          {/* Route 2: The Independent Writeup Page */}
+          <Route path="/writeups/localroot" element={<LocalRoot />} />
+          
+        </Routes>
+      </Router>
+
+      {/* Analytics Tracking Code */}
+      <Analytics />
+    </>
   );
 }
 

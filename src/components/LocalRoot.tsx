@@ -91,7 +91,7 @@ const LocalRoot = () => {
             <li className="flex gap-3">
               <div className="mt-1 min-w-[20px]"><Hash size={18} className="text-slate-500" /></div>
               <div>
-                <strong className="text-white">Web Servers (80 & 8000):</strong> Port 80 was just a default Apache page. But Port 8000 was interesting—it was running Nginx.
+                <strong className="text-white">Web Servers (80 & 8000):</strong> Port 80 was just a default Apache page. But Port 8000 was interesting it was running Nginx.
               </div>
             </li>
           </ul>

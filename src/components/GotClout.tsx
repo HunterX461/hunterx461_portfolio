@@ -1,5 +1,21 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Shield, Search, Mail, Key, Hash, AlertTriangle, Terminal, Instagram, CheckCircle2, Lock, MapPin, Eye, MousePointerClick } from 'lucide-react';
+import { 
+  ArrowLeft, 
+  Shield, 
+  Search, 
+  Mail, 
+  Key, 
+  Hash, 
+  AlertTriangle, 
+  Terminal, 
+  Instagram, 
+  CheckCircle2, 
+  Lock, 
+  MapPin, 
+  Eye, 
+  MousePointerClick, 
+  Layout // <--- Added this missing import
+} from 'lucide-react';
 
 const GotClout = () => {
   return (
@@ -62,28 +78,28 @@ const GotClout = () => {
               <div className="bg-slate-900/50 border border-slate-800 p-4 rounded-lg">
                 <p className="text-white text-sm font-semibold mb-3 text-blue-400 italic font-mono">Exploring Employees Table</p>
                 <div className="space-y-3 text-xs">
-                  <p><strong>Q6: Professional Email?</strong> <span className="text-green-400">afstorm@clouthaus.com</span> [cite: 62]</p>
-                  <p><strong>Q7: Role at CloutHaus?</strong> <span className="text-green-400">Influencer Partner</span> [cite: 67]</p>
-                  <p><strong>Q8: MFA Status?</strong> <span className="text-red-500 font-bold uppercase tracking-tighter">False</span> [cite: 72]</p>
+                  <p><strong>Q6: Professional Email?</strong> <span className="text-green-400">afstorm@clouthaus.com</span></p>
+                  <p><strong>Q7: Role at CloutHaus?</strong> <span className="text-green-400">Influencer Partner</span></p>
+                  <p><strong>Q8: MFA Status?</strong> <span className="text-red-500 font-bold uppercase tracking-tighter">False</span></p>
                 </div>
               </div>
 
               <div className="bg-slate-900/50 border border-slate-800 p-4 rounded-lg">
                 <p className="text-white text-sm font-semibold mb-3 text-red-400 italic font-mono">Phishing Artifacts (Dior Lure)</p>
                 <div className="space-y-3 text-xs">
-                  <p><strong>Q9: Sender Address?</strong> <span className="text-green-400">collabs@dior-partners.com</span> [cite: 79]</p>
-                  <p><strong>Q10: Subject Line?</strong> <span className="text-green-400">[EXTERNAL] Exclusive Partnership Opportunity with Dior</span> [cite: 84]</p>
-                  <p><strong>Q11: Malicious Link?</strong> <span className="text-green-400">https://super-brand-offer.com/login</span> [cite: 87]</p>
+                  <p><strong>Q9: Sender Address?</strong> <span className="text-green-400">collabs@dior-partners.com</span></p>
+                  <p><strong>Q10: Subject Line?</strong> <span className="text-green-400">[EXTERNAL] Exclusive Partnership Opportunity with Dior</span></p>
+                  <p><strong>Q11: Malicious Link?</strong> <span className="text-green-400">https://super-brand-offer.com/login</span></p>
                 </div>
               </div>
 
               <div className="bg-slate-900/50 border border-slate-800 p-4 rounded-lg">
                 <p className="text-white text-sm font-semibold mb-3 text-purple-400 italic font-mono">Network Forensics</p>
                 <div className="space-y-3 text-xs">
-                  <p><strong>Q12: Timestamp of Link Click?</strong> <span className="text-green-400">2025-04-03T11:20:00.000Z</span> [cite: 93]</p>
-                  <p><strong>Q13: Username Entered on Phishing Site?</strong> <span className="text-green-400">afstorm</span> [cite: 96]</p>
-                  <p><strong>Q14: Domain IP Address?</strong> <span className="text-green-400">198.51.100.12</span> [cite: 100]</p>
-                  <p><strong>Q15: Distinct domains on that IP?</strong> <span className="text-green-400">3</span> [cite: 106]</p>
+                  <p><strong>Q12: Timestamp of Link Click?</strong> <span className="text-green-400">2025-04-03T11:20:00.000Z</span></p>
+                  <p><strong>Q13: Username Entered on Phishing Site?</strong> <span className="text-green-400">afstorm</span></p>
+                  <p><strong>Q14: Domain IP Address?</strong> <span className="text-green-400">198.51.100.12</span></p>
+                  <p><strong>Q15: Distinct domains on that IP?</strong> <span className="text-green-400">3</span></p>
                 </div>
               </div>
             </div>

@@ -42,8 +42,7 @@ function App() {
           } />
 
           {/* Route 2: The Independent Writeup Pages */}
-          <Route path="/writeups/localroot" element={<LocalRoot />} />
-          <Route path="/writeups/got-clout" element={<GotClout />} /> {/*  */}
+          <Route path="/writeups/localroot" element={<LocalRoot />} /
           
         </Routes>
       </Router>

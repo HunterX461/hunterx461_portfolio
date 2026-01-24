@@ -14,7 +14,6 @@ import Contact from './components/Contact';
 // New Components
 import WriteupsSection from './components/WriteupsSection';
 import LocalRoot from './components/LocalRoot';
-import GotClout from './components/GotClout'; // 
 
 function App() {
   return (

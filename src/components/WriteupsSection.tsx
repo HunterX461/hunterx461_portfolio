@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Terminal, Shield, ArrowRight } from 'lucide-react';
+import { Terminal, Shield, ArrowRight, Search, Eye } from 'lucide-react';
 
 const WriteupsSection = () => {
   return (
@@ -19,9 +19,9 @@ const WriteupsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           
-          {/* Card: LocalRoot */}
+          {/* Card: LocalRoot (ThunderCipher) */}
           <Link to="/writeups/localroot" className="group relative block h-full">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
             <div className="relative bg-slate-800 border border-slate-700 p-6 rounded-xl h-full flex flex-col hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-1">
@@ -43,6 +43,33 @@ const WriteupsSection = () => {
 
               <div className="flex items-center text-blue-400 font-mono text-sm mt-auto group/link">
                 <span className="mr-2">Read Log</span>
+                <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
+              </div>
+            </div>
+          </Link>
+
+          {/* Card: Got Clout (KC7) */}
+          <Link to="/writeups/got-clout" className="group relative block h-full">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-500 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+            <div className="relative bg-slate-800 border border-slate-700 p-6 rounded-xl h-full flex flex-col hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-1">
+              
+              <div className="flex justify-between items-start mb-4">
+                <span className="bg-purple-500/10 text-purple-400 text-xs font-mono py-1 px-2 rounded border border-purple-500/20 flex items-center gap-1">
+                  <Search size={12} /> OSINT & FORENSICS
+                </span>
+                <span className="text-slate-500 text-xs font-mono">Jan 24, 2026</span>
+              </div>
+
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
+                Got Clout: The Dior Breach
+              </h3>
+
+              <p className="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">
+                Step-by-step investigation into a sophisticated phishing campaign targeting influencers, using KQL and digital forensics. [cite: 35, 55, 56]
+              </p>
+
+              <div className="flex items-center text-purple-400 font-mono text-sm mt-auto group/link">
+                <span className="mr-2">Analyze Log</span>
                 <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
               </div>
             </div>

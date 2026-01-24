@@ -14,6 +14,7 @@ import Contact from './components/Contact';
 // New Components
 import WriteupsSection from './components/WriteupsSection';
 import LocalRoot from './components/LocalRoot';
+import GotClout from './components/GotClout'; // 
 
 function App() {
   return (
@@ -40,8 +41,9 @@ function App() {
             </div>
           } />
 
-          {/* Route 2: The Independent Writeup Page */}
+          {/* Route 2: The Independent Writeup Pages */}
           <Route path="/writeups/localroot" element={<LocalRoot />} />
+          <Route path="/writeups/got-clout" element={<GotClout />} /> {/*  */}
           
         </Routes>
       </Router>

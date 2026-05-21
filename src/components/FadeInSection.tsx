@@ -34,7 +34,7 @@ const FadeInSection = ({ children, className = '' }: FadeInSectionProps) => {
   return (
     <div
       ref={elementRef}
-      className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} ${className}`}
+      className={`scroll-reveal ${visible ? 'scroll-reveal-visible' : 'scroll-reveal-hidden'} ${className}`}
     >
       {children}
     </div>

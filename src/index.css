@@ -137,4 +137,29 @@
     background-size: 4px 4px;
     z-index: 0;
   }
+
+  .transition-serene {
+    transition: background 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .scroll-reveal {
+    @apply transition-all duration-700 ease-out;
+  }
+
+  .scroll-reveal-visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .scroll-reveal-hidden {
+    @apply opacity-0 translate-y-8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .transition-serene,
+  .animate-float-serene,
+  .scroll-reveal {
+    transition: none;
+    animation: none;
+  }
 }

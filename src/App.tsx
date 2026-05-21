@@ -10,6 +10,9 @@ import Projects from './components/Projects';
 import Ethics from './components/Ethics';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
+import FeaturedArticles from './components/FeaturedArticles';
+import OpenSourceProjects from './components/OpenSourceProjects';
+import Footer from './components/Footer';
 
 // New Components
 import WriteupsSection from './components/WriteupsSection';
@@ -23,11 +26,13 @@ function App() {
           
           {/* Route 1: The Main Portfolio Homepage */}
           <Route path="/" element={
-            <div className="min-h-screen bg-slate-900">
+            <div className="min-h-screen noise-overlay">
               <Navigation />
               <Hero />
               <About />
               <Skills />
+              <FeaturedArticles />
+              <OpenSourceProjects />
               <SecurityTimeline />
               <Projects />
               
@@ -37,6 +42,7 @@ function App() {
               <Ethics />
               <Certifications />
               <Contact />
+              <Footer />
             </div>
           } />
 

@@ -13,40 +13,44 @@ const Navigation = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const navItems = ['About', 'Skills', 'Projects', 'Certifications', 'Contact'];
+  const navItems = [
+    { label: 'About', id: 'about' },
+    { label: 'Skills', id: 'skills' },
+    { label: 'Articles', id: 'articles' },
+    { label: 'Open Source', id: 'open-source' },
+    { label: 'Research Journey', id: 'research-journey' },
+    { label: 'Projects', id: 'projects' },
+    { label: 'Contact', id: 'contact' },
+  ];
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-slate-900/80 backdrop-blur-md border-b border-blue-500/10'
+          ? 'bg-[#101826]/75 backdrop-blur-md border-b border-[#4a7c9e]/20'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
-        {/* Terminal Identity */}
         <button
           onClick={scrollToTop}
-          className="font-mono text-sm sm:text-base text-blue-100 tracking-tight flex items-center"
+          className="font-mono text-sm sm:text-base text-[#e8eef5] tracking-tight flex items-center"
         >
           <span className="opacity-80">~/tabrez</span>
-          <span className="ml-1 text-blue-400 animate-pulse">_</span>
+          <span className="ml-1 text-[#93bdd7] animate-pulse">_</span>
         </button>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex gap-8">
+        <div className="hidden md:flex gap-6">
           {navItems.map((item) => (
             <button
-              key={item}
+              key={item.id}
               onClick={() =>
-                document
-                  .getElementById(item.toLowerCase())
-                  ?.scrollIntoView({ behavior: 'smooth' })
+                document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' })
               }
-              className="text-sm font-light tracking-wide text-blue-200/70 hover:text-blue-300 transition-all duration-300 relative group"
+              className="text-sm font-light tracking-wide text-[#a0afc0] hover:text-[#e8eef5] transition-all duration-300 relative group"
             >
-              {item}
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-blue-400 group-hover:w-full transition-all duration-500"></span>
+              {item.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#93bdd7] group-hover:w-full transition-all duration-500"></span>
             </button>
           ))}
         </div>

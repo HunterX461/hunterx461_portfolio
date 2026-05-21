@@ -5,6 +5,7 @@ import FadeInSection from './FadeInSection';
 
 const mediumProfileUrl = 'https://medium.com/@HunterX461';
 const mediumFeedUrl = 'https://medium.com/feed/@HunterX461';
+const rss2jsonEndpoint = 'https://api.rss2json.com/v1/api.json?rss_url=';
 
 const fallbackArticles: Article[] = [
   {
@@ -39,14 +40,10 @@ const fallbackArticles: Article[] = [
   },
 ];
 
-const decodeHtmlEntities = (value: string) =>
-  value
-    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'");
+const decodeHtmlEntities = (value: string) => {
+  const parser = new DOMParser();
+  return parser.parseFromString(value, 'text/html').documentElement.textContent ?? '';
+};
 
 const stripHtml = (value: string) =>
   value
@@ -69,7 +66,7 @@ const FeaturedArticles = () => {
 
     const loadMediumArticles = async () => {
       try {
-        const endpoint = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(mediumFeedUrl)}`;
+        const endpoint = `${rss2jsonEndpoint}${encodeURIComponent(mediumFeedUrl)}`;
         const response = await fetch(endpoint, { signal: controller.signal });
         if (!response.ok) {
           return;

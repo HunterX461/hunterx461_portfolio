@@ -29,6 +29,16 @@
   }
 }
 
+.rain-drop {
+  animation: rain 5s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rain-drop {
+    animation: none;
+  }
+}
+
 @layer base {
   * {
     scroll-behavior: smooth;

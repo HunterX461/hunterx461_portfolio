@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import profileImage from '../assets/tabrez.png';
 
+const RAIN_DROP_COUNT = 10;
+
 const Hero = () => {
   const [visible, setVisible] = useState(false);
 
@@ -20,10 +22,10 @@ const Hero = () => {
       <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-[#93bdd7]/30 to-transparent animate-pulse" />
       <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-[#93bdd7]/20 to-transparent animate-pulse" />
       <div className="absolute inset-0 pointer-events-none opacity-20">
-        {[...Array(10)].map((_, index) => (
+        {[...Array(RAIN_DROP_COUNT)].map((_, index) => (
           <span
             key={index}
-            className="absolute top-[-20%] w-px h-16 bg-gradient-to-b from-[#93bdd7]/20 to-transparent animate-[rain_5s_linear_infinite]"
+            className="rain-drop absolute top-[-20%] w-px h-16 bg-gradient-to-b from-[#93bdd7]/20 to-transparent"
             style={{
               left: `${index * 10 + 5}%`,
               animationDelay: `${index * 0.45}s`,

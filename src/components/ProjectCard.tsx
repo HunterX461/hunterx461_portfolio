@@ -1,4 +1,4 @@
-import { ExternalLink, GitFork, Github, Star } from 'lucide-react';
+import { ExternalLink, GitFork, Github, Star, ArrowUpRight } from 'lucide-react';
 import Badge from './Badge';
 
 export interface OpenSourceProject {
@@ -17,48 +17,58 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <article className="glass-card p-6 h-full flex flex-col">
+    <article className="group glass-card p-6 h-full flex flex-col" data-cursor="hover">
       <div className="flex items-start justify-between gap-4 mb-4">
-        <div>
-          <h3 className="text-2xl text-[#e8eef5] mb-2">{project.name}</h3>
-          {project.badge && <Badge label={project.badge} active />}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="font-mono-tight text-[10px] uppercase tracking-[0.22em] text-white/40">
+              repository
+            </span>
+            {project.badge && <Badge label={project.badge} active />}
+          </div>
+          <h3 className="font-display text-2xl sm:text-3xl text-white">{project.name}</h3>
         </div>
         <a
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[#93bdd7] hover:text-[#e8eef5] transition-colors"
           aria-label={`Open ${project.name} on GitHub`}
+          className="w-10 h-10 grid place-items-center rounded-full glass text-white/70 hover:text-white transition shrink-0"
+          data-cursor="hover"
         >
-          <Github className="w-5 h-5" />
+          <Github className="w-4 h-4" />
         </a>
       </div>
 
-      <p className="text-sm text-[#a0afc0] leading-relaxed mb-5 flex-grow">{project.description}</p>
+      <p className="text-sm text-white/65 leading-relaxed mb-5 flex-grow text-pretty">
+        {project.description}
+      </p>
 
-      <div className="flex flex-wrap gap-2 mb-5">
-        {project.technologies.map((technology) => (
-          <Badge key={technology} label={technology} />
+      <div className="flex flex-wrap gap-1.5 mb-5">
+        {project.technologies.map((t) => (
+          <Badge key={t} label={t} />
         ))}
       </div>
 
-      <div className="flex items-center gap-5 text-sm text-[#a0afc0]">
+      <div className="flex items-center gap-4 pt-4 border-t border-white/8 font-mono-tight text-[11px] uppercase tracking-[0.22em] text-white/55">
         <span className="inline-flex items-center gap-1.5">
-          <Star className="w-4 h-4" />
+          <Star className="w-3.5 h-3.5 text-aurora-amber" />
           {project.stars ?? '—'}
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <GitFork className="w-4 h-4" />
+          <GitFork className="w-3.5 h-3.5 text-aurora-cyan" />
           {project.forks ?? '—'}
         </span>
         <a
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 ml-auto text-[#93bdd7] hover:text-[#e8eef5] transition-colors"
+          className="ml-auto inline-flex items-center gap-1.5 text-white/85 hover:text-white transition"
+          data-cursor="hover"
         >
-          View Repo
-          <ExternalLink className="w-4 h-4" />
+          <span className="underline-grad normal-case tracking-wide">View repo</span>
+          <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          <ExternalLink className="hidden" />
         </a>
       </div>
     </article>

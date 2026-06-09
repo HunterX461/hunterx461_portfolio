@@ -1,4 +1,4 @@
-import { Clock3, ExternalLink } from 'lucide-react';
+import { Clock3, ArrowUpRight, CalendarDays } from 'lucide-react';
 import Badge from './Badge';
 
 export interface Article {
@@ -17,17 +17,27 @@ interface ArticleCardProps {
 
 const ArticleCard = ({ article }: ArticleCardProps) => {
   return (
-    <article className="glass-card p-6 h-full flex flex-col">
-      <p className="text-xs text-[#a0afc0] mb-3">{article.date}</p>
-      <h3 className="text-2xl text-[#e8eef5] mb-3">{article.title}</h3>
-      <p className="text-sm text-[#a0afc0] leading-relaxed mb-5 flex-grow">{article.excerpt}</p>
-
-      <div className="flex items-center gap-2 text-xs text-[#a0afc0] mb-4">
-        <Clock3 className="w-3.5 h-3.5" />
-        <span>{article.readTime}</span>
+    <article className="group glass-card p-6 h-full flex flex-col" data-cursor="hover">
+      <div className="flex items-center justify-between text-[10px] font-mono-tight uppercase tracking-[0.22em] text-white/45 mb-4">
+        <span className="inline-flex items-center gap-1.5">
+          <CalendarDays className="w-3 h-3" />
+          {article.date}
+        </span>
+        <span className="inline-flex items-center gap-1.5">
+          <Clock3 className="w-3 h-3" />
+          {article.readTime}
+        </span>
       </div>
 
-      <div className="flex flex-wrap gap-2 mb-5">
+      <h3 className="font-display text-xl sm:text-2xl text-white leading-snug mb-3 text-balance">
+        {article.title}
+      </h3>
+
+      <p className="text-sm text-white/60 leading-relaxed mb-5 flex-grow text-pretty">
+        {article.excerpt}
+      </p>
+
+      <div className="flex flex-wrap gap-1.5 mb-5">
         {article.tags.map((tag) => (
           <Badge key={tag} label={tag} />
         ))}
@@ -37,10 +47,11 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         href={article.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-sm text-[#93bdd7] hover:text-[#e8eef5] transition-colors"
+        className="inline-flex items-center gap-2 text-sm text-white/85 hover:text-white transition self-start"
+        data-cursor="hover"
       >
-        <span>Read article</span>
-        <ExternalLink className="w-4 h-4" />
+        <span className="underline-grad">Read article</span>
+        <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </a>
     </article>
   );

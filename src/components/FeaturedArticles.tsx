@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
+import { BookOpen, ArrowUpRight } from 'lucide-react';
 import ArticleCard, { type Article } from './ArticleCard';
 import Badge from './Badge';
-import FadeInSection from './FadeInSection';
+import Reveal from './fx/Reveal';
 
 const mediumProfileUrl = 'https://medium.com/@HunterX461';
 const mediumFeedUrl = 'https://medium.com/feed/@HunterX461';
@@ -46,10 +47,7 @@ const decodeHtmlEntities = (value: string) => {
 };
 
 const stripHtml = (value: string) =>
-  value
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+  value.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 
 const estimateReadTime = (content: string) => {
   const words = content.split(/\s+/).filter(Boolean).length;
@@ -63,15 +61,11 @@ const FeaturedArticles = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-
-    const loadMediumArticles = async () => {
+    const load = async () => {
       try {
         const endpoint = `${rss2jsonEndpoint}${encodeURIComponent(mediumFeedUrl)}`;
         const response = await fetch(endpoint, { signal: controller.signal });
-        if (!response.ok) {
-          return;
-        }
-
+        if (!response.ok) return;
         const data = (await response.json()) as {
           items?: Array<{
             guid?: string;
@@ -82,11 +76,7 @@ const FeaturedArticles = () => {
             categories?: string[];
           }>;
         };
-
-        if (!data.items?.length) {
-          return;
-        }
-
+        if (!data.items?.length) return;
         const parsed = data.items.slice(0, 6).map((item, index) => {
           const contentText = stripHtml(decodeHtmlEntities(item.content ?? ''));
           const excerpt = contentText.slice(0, 170);
@@ -108,38 +98,36 @@ const FeaturedArticles = () => {
             link: item.link ?? mediumProfileUrl,
           };
         });
-
         setArticles(parsed);
       } catch {
-        // Fallback content remains visible if the RSS endpoint is unavailable.
+        // fallback used
       }
     };
-
-    void loadMediumArticles();
+    void load();
     return () => controller.abort();
   }, []);
 
   const tags = useMemo(() => {
-    const uniqueTags = new Set<string>();
-    articles.forEach((article) => article.tags.forEach((tag) => uniqueTags.add(tag)));
-    return ['All', ...Array.from(uniqueTags)];
+    const u = new Set<string>();
+    articles.forEach((a) => a.tags.forEach((t) => u.add(t)));
+    return ['All', ...Array.from(u)];
   }, [articles]);
 
-  const filteredArticles =
-    activeTag === 'All'
-      ? articles
-      : articles.filter((article) => article.tags.some((tag) => tag === activeTag));
+  const filtered =
+    activeTag === 'All' ? articles : articles.filter((a) => a.tags.some((t) => t === activeTag));
 
   return (
     <section id="articles" className="relative py-32">
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <p className="section-kicker">Knowledge Sharing</p>
-          <h2 className="section-title">Featured Research & Articles</h2>
-          <div className="soft-divider"></div>
-        </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+        <Reveal className="text-center mb-10">
+          <p className="section-kicker mb-3">// 03 — knowledge sharing</p>
+          <h2 className="section-title">
+            Research <span className="aurora-text italic">&amp;</span> Articles
+          </h2>
+          <div className="soft-divider" />
+        </Reveal>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <Reveal delay={80} className="flex flex-wrap justify-center gap-2 mb-10">
           {tags.map((tag) => (
             <Badge
               key={tag}
@@ -148,26 +136,29 @@ const FeaturedArticles = () => {
               onClick={() => setActiveTag(tag)}
             />
           ))}
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-          {filteredArticles.map((article) => (
-            <FadeInSection key={article.id}>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {filtered.map((article, i) => (
+            <Reveal key={article.id} delay={i * 70}>
               <ArticleCard article={article} />
-            </FadeInSection>
+            </Reveal>
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <Reveal delay={120} className="text-center mt-12">
           <a
             href={mediumProfileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex px-5 py-2.5 rounded-lg border border-[#4a7c9e]/35 text-[#93bdd7] hover:text-[#e8eef5] hover:border-[#4a7c9e]/65 transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass text-white/85 hover:text-white transition font-mono-tight text-xs uppercase tracking-[0.22em]"
+            data-cursor="hover"
           >
+            <BookOpen className="w-4 h-4" />
             View all on Medium
+            <ArrowUpRight className="w-4 h-4" />
           </a>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

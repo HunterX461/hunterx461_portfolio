@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import FadeInSection from './FadeInSection';
 import ProjectCard, { type OpenSourceProject } from './ProjectCard';
+import Reveal from './fx/Reveal';
 
 const baseProjects: OpenSourceProject[] = [
   {
@@ -22,9 +22,7 @@ const baseProjects: OpenSourceProject[] = [
 
 const parseRepositoryPath = (url: string) => {
   const parts = new URL(url).pathname.split('/').filter(Boolean);
-  if (parts.length < 2) {
-    return null;
-  }
+  if (parts.length < 2) return null;
   return { owner: parts[0], repo: parts[1] };
 };
 
@@ -33,62 +31,49 @@ const OpenSourceProjects = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-
     const loadStats = async () => {
       try {
-        const projectsWithStats = await Promise.all(
-          baseProjects.map(async (project) => {
-            const repoPath = parseRepositoryPath(project.link);
-            if (!repoPath) {
-              return project;
-            }
-
-            const response = await fetch(
+        const enriched = await Promise.all(
+          baseProjects.map(async (p) => {
+            const repoPath = parseRepositoryPath(p.link);
+            if (!repoPath) return p;
+            const r = await fetch(
               `https://api.github.com/repos/${repoPath.owner}/${repoPath.repo}`,
-              { signal: controller.signal },
+              { signal: controller.signal }
             );
-
-            if (!response.ok) {
-              return project;
-            }
-
-            const data = (await response.json()) as {
+            if (!r.ok) return p;
+            const data = (await r.json()) as {
               stargazers_count?: number;
               forks_count?: number;
             };
-
-            return {
-              ...project,
-              stars: data.stargazers_count,
-              forks: data.forks_count,
-            };
-          }),
+            return { ...p, stars: data.stargazers_count, forks: data.forks_count };
+          })
         );
-
-        setProjects(projectsWithStats);
+        setProjects(enriched);
       } catch {
-        // Keep static data if GitHub API is unavailable.
+        /* keep static */
       }
     };
-
     void loadStats();
     return () => controller.abort();
   }, []);
 
   return (
     <section id="open-source" className="relative py-32">
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <p className="section-kicker">Building in Public</p>
-          <h2 className="section-title">Open Source Security Projects</h2>
-          <div className="soft-divider"></div>
-        </div>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-10">
+        <Reveal className="text-center mb-12">
+          <p className="section-kicker mb-3">// 04 — building in public</p>
+          <h2 className="section-title">
+            Open Source <span className="aurora-text italic">Projects</span>
+          </h2>
+          <div className="soft-divider" />
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project) => (
-            <FadeInSection key={project.name}>
-              <ProjectCard project={project} />
-            </FadeInSection>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {projects.map((p, i) => (
+            <Reveal key={p.name} delay={i * 80}>
+              <ProjectCard project={p} />
+            </Reveal>
           ))}
         </div>
       </div>

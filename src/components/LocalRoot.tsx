@@ -1,18 +1,22 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Terminal, Search, Server, Shield, Award, ExternalLink, Hash } from 'lucide-react';
+import { ArrowLeft, Terminal, Award, ExternalLink, Hash } from 'lucide-react';
 
 const LocalRoot = () => {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-300 font-sans selection:bg-blue-500 selection:text-white pb-20">
-      
+    <div className="min-h-screen text-slate-300 font-sans selection:bg-aurora-violet selection:text-white pb-20">
+
       {/* Navigation Bar */}
-      <nav className="border-b border-slate-800 bg-slate-950/80 backdrop-blur fixed w-full top-0 z-50">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <Link to="/" className="text-blue-500 hover:text-white transition-colors font-mono flex items-center gap-2">
-            <ArrowLeft size={16} /> return_home
+      <nav className="fixed w-full top-0 z-50 pt-4">
+        <div className="container mx-auto px-6 flex justify-between items-center">
+          <Link
+            to="/"
+            className="glass-pill px-4 py-2 text-white/85 hover:text-white transition-colors font-mono-tight text-xs uppercase tracking-[0.22em] flex items-center gap-2"
+            data-cursor="hover"
+          >
+            <ArrowLeft size={14} /> return_home
           </Link>
-          <span className="text-xs font-mono text-slate-600 border border-slate-800 px-2 py-1 rounded">
-            MISSION_ID: LOCALROOT
+          <span className="glass-pill px-3 py-1.5 text-[10px] font-mono-tight text-aurora-cyan uppercase tracking-[0.22em]">
+            MISSION_ID · LOCALROOT
           </span>
         </div>
       </nav>

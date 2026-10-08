@@ -9,7 +9,6 @@ const baseProjects: OpenSourceProject[] = [
       'Security research framework and toolkit for repeatable vulnerability analysis, recon workflows, and structured documentation.',
     technologies: ['Security Research', 'Python', 'Automation', 'Methodology'],
     link: 'https://github.com/HunterX461/protocol-zero',
-    badge: 'Featured',
   },
   {
     name: 'QuantPairs Lab',
@@ -17,6 +16,21 @@ const baseProjects: OpenSourceProject[] = [
       'Quantitative strategy lab with market-neutral pair research, statistical testing, and backtesting workflows.',
     technologies: ['Python', 'Pandas', 'Automation', 'Data Analysis'],
     link: 'https://github.com/HunterX461/quantpairs-lab',
+  },
+  {
+    name: 'Reality Kernel',
+    description:
+      'An AI-agent security project exploring deterministic intent verification, kernel-level enforcement, and cryptographic execution attestation.',
+    technologies: [
+      'AI Security',
+      'Rust',
+      'eBPF',
+      'Linux Security',
+      'Python SDK',
+      'Cryptography',
+    ],
+    link: 'https://github.com/Keter-Lab/reality-kernel',
+    badge: 'Featured',
   },
 ];
 
